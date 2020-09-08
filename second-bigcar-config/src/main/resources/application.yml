@@ -1,0 +1,17 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: second-bigcar-config
+    #使用本地的方式
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/properties/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka

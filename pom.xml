@@ -11,6 +11,8 @@
         <module>second-bigcar-eureka</module>
         <module>second-bigcar-config</module>
         <module>second-bigcar-utils</module>
+        <module>second-bigcar-es</module>
+        <module>second-bigcar-pojo</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -79,8 +81,8 @@
                 <artifactId>elasticsearch</artifactId>
                 <version>6.2.1</version>
             </dependency>
-
         </dependencies>
+
     </dependencyManagement>
 
 

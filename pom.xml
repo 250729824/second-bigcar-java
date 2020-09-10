@@ -13,6 +13,7 @@
         <module>second-bigcar-utils</module>
         <module>second-bigcar-es</module>
         <module>second-bigcar-pojo</module>
+        <module>second-bigcar-quartz</module>
     </modules>
     <packaging>pom</packaging>
 

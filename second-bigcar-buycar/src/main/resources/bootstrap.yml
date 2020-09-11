@@ -1,0 +1,27 @@
+server:
+  port: 8300
+spring:
+  application:
+    name: second-bigcar-buycar
+  cloud:
+    config:
+      discovery:
+        service-id: second-bigcar-config
+        enabled: true
+      name: neo-config
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  #将注册到eureka的status变更为ip：端口号
+  instance:
+    prefer-ip-address: true
+    hostName: ${spring.cloud.client.ip-address}
+    instance-id: http://${spring.cloud.client.ip-address}:${server.port}
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 2000000
+feign:
+  hystrix:
+    enabled: true

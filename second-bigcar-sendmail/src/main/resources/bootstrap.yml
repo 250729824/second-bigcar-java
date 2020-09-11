@@ -1,0 +1,45 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: second-bigcar-sendmail
+  mail:
+    host: smtp.qq.com
+    username: 1051152590@qq.com
+    password: txusatskxdwlbcff
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: second-bigcar-config
+      name: neo-config
+      profile: dev
+
+  rabbitmq:
+    host: 47.105.189.33
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  #将注册到eureka的status变更为ip：端口号
+  instance:
+    prefer-ip-address: true
+    hostName: ${spring.cloud.client.ip-address}
+    instance-id: http://${spring.cloud.client.ip-address}:${server.port}
+
+
+
+

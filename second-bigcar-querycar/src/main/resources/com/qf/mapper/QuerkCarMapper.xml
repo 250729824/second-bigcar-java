@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.IUnCarDao">
+
+    <select id="getAllCar" resultType="uncar">
+       select * from car c
+        inner join picture p on c.car_id = p.pic_id
+        inner join car_brand cb on cb.cb_id = c.car_id
+    </select>
+
+    <select id="getAllUnCars" resultType="uncar">
+        select * from car c
+        inner join picture p on c.car_id = p.pic_id
+        inner join car_brand cb on cb.cb_id = c.car_id
+        <where>
+            <if test="car_distance != null">
+               or car_distance = #{car_distance}
+            </if>
+            <if test="car_displace != null">
+                or car_displace = #{car_displace}
+            </if>
+            <if test="car_gearbox != null">
+                or car_gearbox = #{car_gearbox}
+            </if>
+            <if test="car_standard != null">
+                or car_standard = #{car_standard}
+            </if>
+            <if test="car_usedtime != null">
+                or car_color = #{car_color}
+            </if>
+            <if test="car_brand != null">
+                or car_brand = #{car_brand}
+            </if>
+            <if test="car_series != null">
+                or car_series = #{car_series}
+            </if>
+            <if test="nowcar_price != null">
+                or nowcar_price = #{nowcar_price}
+            </if>
+
+            <if test="licence_location != null">
+                or licence_location = #{licence_location}
+            </if>
+        </where>
+    </select>
+    <select id="getCarByCarId" resultType="uncar">
+        select * from car c
+        inner join picture p on c.car_id = p.pic_id
+        inner join car_brand cb on cb.cb_id = c.car_id
+        where c.car_id = #{car_id}
+    </select>
+
+
+</mapper>

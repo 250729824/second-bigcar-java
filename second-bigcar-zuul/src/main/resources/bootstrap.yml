@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: second-bigcar-zuul
+  cloud:
+    config:
+      name: neo-config
+      profile: dev
+      discovery:
+        service-id: second-bigcar-config
+        enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+#解决zuul转发无法携带cookie
+zuul:
+  sensitive-headers:
+

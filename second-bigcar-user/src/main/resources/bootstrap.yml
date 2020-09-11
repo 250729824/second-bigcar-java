@@ -1,0 +1,34 @@
+server:
+  port: 8400
+spring:
+  application:
+    name: second-bigcar-user
+  cloud:
+    config:
+      discovery:
+        service-id: second-bigcar-config
+        enabled: true
+      name: neo-config
+      profile: dev
+  rabbitmq:
+    host: 47.105.189.33
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+  #将注册到eureka的status变更为ip：端口号
+  instance:
+    prefer-ip-address: true
+    hostName: ${spring.cloud.client.ip-address}
+    instance-id: http://${spring.cloud.client.ip-address}:${server.port}
+ribbon:
+  ConnectTimeOut: 10000
+  ReadTimeOut: 2000000
+feign:
+  hystrix:
+    enabled: true

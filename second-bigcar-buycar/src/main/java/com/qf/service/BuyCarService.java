@@ -10,7 +10,7 @@ public interface BuyCarService {
 
 
     BaseResult finUserAllCar(HttpServletRequest request);
-    BaseResult saveCarToUser(Integer car_id, Date createtime, HttpServletRequest request);
+    BaseResult saveCarToUser(Integer car_id, Integer cb_id,Date createtime, HttpServletRequest request);
 
 
 }

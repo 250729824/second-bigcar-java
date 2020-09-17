@@ -19,7 +19,7 @@ public class LoginFilter extends ZuulFilter {
 
     private String LOGIN_URL = "/second-bigcar-user/user/loginUser";
     private String SEND_URL = "/second-bigcar-user/user/sendMail";
-
+    private String IMGE_URL = "/second-bigcar-querycar/upload";
     @Autowired
     RedisTemplate redisTemplate;
 
@@ -41,7 +41,7 @@ public class LoginFilter extends ZuulFilter {
         HttpServletRequest request = currentContext.getRequest();
         //从reuqest请求中获取请求的路径
         String requestURI = request.getRequestURI();
-        if(requestURI.equals(LOGIN_URL) || requestURI.equals(SEND_URL)) {
+        if(requestURI.equals(LOGIN_URL) || requestURI.equals(SEND_URL) || requestURI.equals(IMGE_URL)) {
             return false;
         }
         return true;

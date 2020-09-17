@@ -6,13 +6,13 @@
 
     <select id="getAllCar" resultType="uncar">
        select * from car c
-        inner join picture p on c.car_id = p.pic_id
+        inner join picture p on c.car_id = p.car_id
         inner join car_brand cb on cb.cb_id = c.car_id
     </select>
 
     <select id="getAllUnCars" resultType="uncar">
         select * from car c
-        inner join picture p on c.car_id = p.pic_id
+        inner join picture p on c.car_id = p.car_id
         inner join car_brand cb on cb.cb_id = c.car_id
         <where>
             <if test="car_distance != null">
@@ -47,10 +47,27 @@
     </select>
     <select id="getCarByCarId" resultType="uncar">
         select * from car c
-        inner join picture p on c.car_id = p.pic_id
+        inner join picture p on c.car_id = p.car_id
         inner join car_brand cb on cb.cb_id = c.car_id
         where c.car_id = #{car_id}
     </select>
+
+    <insert id="insertCar" >
+
+        insert into car (car_id,car_update_time,car_desc,car_upload,car_distance,car_displace,car_gearbox,car_standard,car_usedtime,cb_id,newcar_price,nowcar_price,car_color,licence_location) values
+        (#{car_id},#{car_update_time},#{car_desc},#{car_upload},#{car_distance},#{car_displace},#{car_gearbox},#{car_standard},#{car_usedtime},#{cb_id},#{newcar_price},#{nowcar_price},#{car_color},#{licence_location});
+
+        insert into car_brand (cb_id,car_brand,car_series) values (#{cb_id},#{car_brand},#{car_series});
+
+        insert into picture (pic_id,car_id,pic_url) values (null,#{car_id},#{pic_url});
+    </insert>
+
+    <select id="getBrand" resultType="uncar">
+        select * from car_brand
+    </select>
+
+
+
 
 
 </mapper>

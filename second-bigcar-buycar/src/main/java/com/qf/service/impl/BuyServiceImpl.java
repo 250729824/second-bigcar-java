@@ -14,6 +14,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BuyServiceImpl implements BuyCarService {
@@ -43,11 +44,19 @@ public class BuyServiceImpl implements BuyCarService {
     }
 
     @Override
-    public BaseResult saveCarToUser(Integer car_id, Date createtime, HttpServletRequest request) {
+    public BaseResult saveCarToUser(Integer car_id, Integer cb_id,Date createtime, HttpServletRequest request) {
         //获取当前操作用户
         User user = findUserByToken(request);
         //获取商品的信息
-        UnCar unCar = carsClient.getCarByCarId(car_id);
+        Map map = carsClient.getCarByCarId(car_id, cb_id);
+        Object unCar1 =  map.get("uncar");
+        Object o = JSONObject.toJSON(unCar1);
+        UnCar unCar = JSONObject.parseObject(o.toString(), UnCar.class);
+
+
+//        System.out.println("==>>>>"+unCar1);
+//        UnCar unCar = new UnCar();
+        System.out.println();
         unCar.setCreatetime(createtime);
         //声明返回值
         BaseResult baseResult = new BaseResult();
@@ -55,6 +64,7 @@ public class BuyServiceImpl implements BuyCarService {
         try{
             //操作redis
             redisTemplate.opsForHash().put("cars_"+user.getCode(),unCar.getCar_id().toString(),unCar);
+            redisTemplate.opsForHash().put("user_cars",user.getUserMail(),unCar);
         }catch (Exception e){
             System.out.println("======>"+e.getMessage());
             baseResult.setMessage("预约失败");

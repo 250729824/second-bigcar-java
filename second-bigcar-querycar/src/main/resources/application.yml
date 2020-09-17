@@ -1,0 +1,6 @@
+upload:
+  qiniu:
+    ak: kO5hh9u_boy3FGw_X2rfPcnSQQCvM8cYmQj624my
+    sk: SF8x-JWZIIvM6ZLPQ3cMJ_aXhyWRgoFwxXEQ5jAT
+    bucketname: yzx-project
+    url: http://qfcuavro3.hb-bkt.clouddn.com/

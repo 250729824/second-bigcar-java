@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.ICarParameterDao">
+
+    <select id="getAllCarParameter" resultType="CarParameter">
+       SELECT * from car_brand cbd
+        inner join car_basic cb on cbd.cb_id = cb.cb_id
+        inner join car_engine ce on ce.cb_id = cb.cb_id
+        inner join car_brake cbk on cbk.cb_id = cb.cb_id
+        inner join security_config sc on sc.cb_id = cb.cb_id
+        inner join extra_config ec on ec.cb_id = cb.cb_id
+        inner join internal_config ic on ic.cb_id = cb.cb_id
+        where cb.cb_id = #{cb_id}
+    </select>
+
+
+
+</mapper>

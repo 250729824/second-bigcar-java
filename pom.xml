@@ -14,6 +14,12 @@
         <module>second-bigcar-es</module>
         <module>second-bigcar-pojo</module>
         <module>second-bigcar-quartz</module>
+        <module>second-bigcar-querycar</module>
+        <module>second-bigcar-buycar</module>
+        <module>second-bigcar-zuul</module>
+        <module>second-bigcar-user</module>
+        <module>second-bigcar-sendmail</module>
+        <module>second-bigcar-carparameter</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -72,6 +78,18 @@
                 <version>1.2.62</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>[7.2.0, 7.2.99]</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>2.8.5</version>
+                <scope>compile</scope>
+            </dependency>
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-high-level-client</artifactId>
